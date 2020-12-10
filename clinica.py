@@ -69,7 +69,7 @@ def validarLogin():
         if len(data) > 0:
             if str(data[0][1]) == _password:
                 session['user'] = data[0][0]
-                return redirect('/sistema')
+                return redirect('/sistema' )
             else:
                 return render_template('intranet.html', error='ERROR: Contraseña es Incorrecta')
         else:
