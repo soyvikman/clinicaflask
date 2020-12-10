@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+<meta charset="UTF-8">  
+    <title>Aplicación Web Clinica</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="./../static/css/style.css">
+  <script>
+    $(function(){
+        $.ajax({
+            url : '/buscarCitas',
+            type : 'GET',
+            success: function(res){
+                var div = $('<div>')
+                .attr('class', 'list-group')
+                .append($('<a>')
+                .attr('class', 'list-group-item active')
+                .append($('<h4>')
+                .attr('class', 'list-group-item-heading'),
+                $('<p>')
+                .attr('class', 'list-group-item-text')));
+                var wishObj = JSON.parse(res);
+                var wish = '';               
+                $.each(wishObj,function(index, value){
+                    wish = $(div).clone();
+                    $(wish).find('h4').text(value.Title);
+                    $(wish).find('p').text(value.Description);
+                    $('.jumbotron').append(wish);
+                });
+            },
+            error: function(error){
+                console.log(error);
+            }
+        });
+    });
+    </script>
+
+  </head>
+ 
+  <body>
+    <nav class="navbar navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="https://i.pinimg.com/originals/b0/14/83/b01483f04e120f3949d00dc75f135b52.png" alt="" width="60" height="60" class="d-inline-block align-top">
+          Cita Medica
+        </a>
+          <a class="nav-item nav-link" href="/">Inicio</a>
+          <a class="nav-item nav-link" href="/conocenos">Conocenos</a>
+          <a class="nav-item nav-link" href="/cita">Citas</a>
+          <a class="nav-item nav-link" href="/intranet">Intranet</a>
+      </div>
+    </nav>
+    <div class="container-cita">
+      
+
+        <h3>Verificar Cita Medica</h3>
+        <form class="form-signin" action="/buscarCitas" method="post">
+        <label for="inputDNI" class="sr-only">DNI</label>
+        <input type="name" name="inputDNI" id="inputDNI" class="form-control" placeholder="Ingresar DNI" required autofocus>
+                 
+        <button id="btnSignIn" class="btn btn-lg btn-success btn-block" type="submit" style="margin-top: 1%; margin-bottom: 1%;">Buscar</button>
+      </form>
+ 	
+      </div>
+    
+   {% if error %}
+
+   <div class="alert alert-danger" style="width: 30%; margin: 0 auto;" role="alert">
+    No se han encontrado registros con ese número.
+  </div>
+
+    {% endif %}
+
+   {% if citasrender %}
+    <div class="jumbotron">
+      <h1>Citas</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Acto Médico</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Hora</th>
+            <th scope="col">Paciente</th>
+            <th scope="col">Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>{{citasrender[0]}}</th>
+            <th scope="row">{{citasrender[1]}}</th>
+            <td>{{citasrender[2]}}</td>
+            <td>{{citasrender[3]}}</td>
+            <td>{{citasrender[4]}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div> 
+    
+    {% endif %}
+       
+ 
+    
+    </div>
+
+   
+  </body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <title>Aplicación Web de Lista de Deseos</title>
+ 
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css' ) }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css' ) }}">
+    <link href="../static/css/signup.css" rel="stylesheet">
+    <script src="../static/js/jquery-1.11.2.js"></script>
+    <script>
+    $(function(){
+        $.ajax({
+            url : '/conseguirUsuario',
+            type : 'GET',
+            success: function(res){
+                var div = $('<div>')
+                .attr('class', 'list-group')
+                .append($('<a>')
+                .attr('class', 'list-group-item active')
+                .append($('<h4>')
+                .attr('class', 'list-group-item-heading'),
+                $('<p>')
+                .attr('class', 'list-group-item-text')));
+                var wishObj = JSON.parse(res);
+                var wish = '';               
+                $.each(wishObj,function(index, value){
+                    wish = $(div).clone();
+                    $(wish).find('h4').text(value.Usuario);
+                    $(wish).find('p').text(value.Contraseña);
+                    $('.jumbotron').append(wish);
+                });
+            },
+            error: function(error){
+                console.log(error);
+            }
+        });
+    });
+    </script>
+ 
+ 
+</head>
+
+
+
+
+ 
+<body>
+ 
+    <div class="container">
+        <div class="header">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li role="presentation"><a href="#">Mantenimiento</a></li>
+<ul>
+<li role="presentation" class="active"><a href="/mantUsuario">Mantenimiento Usuario</a>
+                    </li>
+<li role="presentation" class="active"><a href="/mantPaciente">Mantenimiento Paciente</a>
+                    </li>
+<li role="presentation" class="active"><a href="/mantServicio">Mantenimiento Servicio</a>
+                    </li>
+<li role="presentation" class="active"><a href="/mantMedico">Mantenimiento Medico</a>
+                    </li>
+</ul>
+                    <li role="presentation" class="active"><a href="#">Programacion</a>
+                    </li>
+<ul>
+                    <li role="presentation" class="active"><a href="/progrConsultorio">Programacion Consultorio</a>
+                    </li></ul>
+<li role="presentation" class="active"><a href="/crearCita">Cita Medica</a>
+                    </li>
+<li role="presentation" class="active"><a href="/logout">Salir</a>
+                    </li>
+                </ul>
+            </nav>
+            <h3 class="text-muted">Aplicación Web</h3>
+        </div>
+
+
+ <form class="form-signin" action="/eliminaUsuario" method="post">
+        <label for="inputU" class="sr-only">Usuario</label>
+        <input type="name" name="inputU" id="inputU" class="form-control" placeholder="Ingresar Usuario" required autofocus>
+
+        <label for="inputP" class="sr-only">Contraseña</label>
+        <input type="name" name="inputP" id="inputP" class="form-control" placeholder="Ingresar Contraseña" required>
+         
+        <button id="btnIn" class="btn btn-lg btn-primary btn-block" type="submit">Agregar Usuario</button>
+
+      </form>
+
+  <div>
+	
+ 	   <a href="/editarUsuario" class="btn btn-secondary">Modificar Usuario</a>
+              <a href="/eliminarUsuario" class="btn btn-danger btn-delete">Eliminar Usuario</a>
+ </div>
+ <h1>{{error}}</h1>
+
+
+
+        <div class="jumbotron">
+            <h1>Usuarios: </h1>
+ 
+        </div>
+ 
+ 
+ 
+    </div>
+</body>
+ 
+</html>

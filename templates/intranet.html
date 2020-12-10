@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Aplicación Web Clinica</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="./../static/css/style.css">
+       
+  </head>
+  <nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="https://i.pinimg.com/originals/b0/14/83/b01483f04e120f3949d00dc75f135b52.png" alt="" width="60" height="60" class="d-inline-block align-top">
+        Cita Medica
+      </a>
+        <a class="nav-item nav-link" href="/">Inicio</a>
+        <a class="nav-item nav-link" href="/conocenos">Conocenos</a>
+        <a class="nav-item nav-link" href="/cita">Citas</a>
+        <a class="nav-item nav-link" href="/intranet">Intranet</a>
+    </div>
+  </nav>
+  <body>
+    <h3 style="width: 80%; text-align: center; margin-left: auto; margin-right: auto; margin-top: 2%; margin-bottom: 2%;">Inicia Sesión para ingresar el Sistema de Citas Médicas</h3>
+    <div class="container-intranet">
+   
+           
+        
+        <form class="form-signin" action="/validarLogin" method="post">
+        <label for="inputUser" class="sr-only">Usuario</label>
+        <input type="name" name="inputUser" id="inputUser" class="form-control" placeholder="Ingresar Usuario" required autofocus>
+        <label for="inputPassword" class="sr-only">Contraseña</label>
+        <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Ingresar Contraseña" required>
+         
+        <button id="btnSignIn" class="btn btn-lg btn-primary btn-block" type="submit" style="margin-top: 1%; margin-bottom: 1%;">Iniciar Sesión</button>
+      </form>
+
+      {% if error %}
+
+   <div class="alert alert-danger" style="width: 100%; margin: 0 auto;" role="alert">
+    Datos de ingreso incorrectos.
+  </div>
+
+    {% endif %}
+
+
+ 
+       
+ 
+     
+ 
+    </div>
+  </body>
+</html>

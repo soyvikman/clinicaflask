@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <title>Aplicación Web</title>
+
+</head>
+
+ 
+<body>
+ 
+    <div class="container">
+        <div class="header">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li role="presentation"><a href="#">Mantenimiento</a></li>
+<ul>
+<li role="presentation" class="active"><a href="/mantUsuario">Mantenimiento Usuario</a>
+                    </li>
+<li role="presentation" class="active"><a href="/mantPaciente">Mantenimiento Paciente</a>
+                    </li>
+<li role="presentation" class="active"><a href="/mantServicio">Mantenimiento Servicio</a>
+                    </li>
+<li role="presentation" class="active"><a href="/mantMedico">Mantenimiento Medico</a>
+                    </li>
+</ul>
+                    <li role="presentation" class="active"><a href="#">Programacion</a>
+                    </li>
+<ul>
+                    <li role="presentation" class="active"><a href="/progrConsultorio">Programacion Consultorio</a>
+                    </li></ul>
+<li role="presentation" class="active"><a href="/crearCita">Cita Medica</a>
+                    </li>
+<li role="presentation" class="active"><a href="/logout">Salir</a>
+                    </li>
+                </ul>
+            </nav>
+            <h3 class="text-muted">Aplicación Web</h3>
+        </div>
+
+
+ <form class="form-signin" action="/eliminaPaciente" method="post">
+
+        <label for="inputApeP" class="sr-only">Ape Pater</label>
+        <input type="name" name="inputApeP" id="inputApeP" class="form-control" placeholder="Ingresar Apellido Paterno" required autofocus><p></p>
+
+        <label for="inputApeM" class="sr-only">ApeMAter</label>
+        <input type="name" name="inputApeM" id="inputApeM" class="form-control" placeholder="Ingresar Apellido Materno" required><p></p>
+
+	<label for="inputNom" class="sr-only">Nom</label>
+        <input type="name" name="inputNom" id="inputNom" class="form-control" placeholder="Ingresar Nombres" required><p></p>
+
+	<label for="inputTipo" class="sr-only">Tipo</label>
+        <input type="name" name="inputTipo" id="inputTipo" class="form-control" placeholder="Ingresar Tipo de documento" required><p></p>
+
+	<label for="inputNumDoc" class="sr-only">Num doc</label>
+        <input type="name" name="inputNumDoc" id="inputNumDoc" class="form-control" placeholder="Ingresar Numero Documento" required><p></p>
+
+	<label for="inputTelf" class="sr-only">Num Telf</label>
+        <input type="name" name="inputTelf" id="inputTelf" class="form-control" placeholder="Ingresar Numero Telefonico"><p></p>
+
+    	<label for="inputDir class="sr-only">Dirc</label>
+        <input type="name" name="inputDir" id="inputDir" class="form-control" placeholder="Ingresar Direccion"><p></p>
+
+	<label for="inputDistr" class="sr-only">dis</label>
+        <input type="name" name="inputDistr" id="inputDistr" class="form-control" placeholder="Ingresar Distrito"><p></p>
+
+	<label for="inputFechNac" class="sr-only">fecnac</label>
+        <input type="name" name="inputFechNac" id="inputFechNac" class="form-control" placeholder="Ingresar Fecha de Nacimiento" required><p></p>
+
+	<label for="inputSex" class="sr-only">Sex</label>
+        <input type="name" name="inputSex" id="inputSex" class="form-control" placeholder="Ingresar Sexo" required><p></p>
+
+	<label for="inputTipSeg" class="sr-only">tipseguro</label>
+        <input type="name" name="inputTipSeg" id="inputTipSeg" class="form-control" placeholder="Ingresar Tipo de Seguro" required><p></p>
+
+	<label for="inputVig" class="sr-only">vigencia</label>
+        <input type="name" name="inputVig" id="inputVig" class="form-control" placeholder="Ingresar Vigencia de Seguro" required>
+     
+        <button id="btnIn" class="btn btn-lg btn-primary btn-block" type="submit">Agregar Paciente</button>
+
+      </form>
+
+
+ <h1>{{error}}</h1>
+
+
+
+        <div class="jumbotron">
+            <h1>Usuarios: </h1>
+ 
+        </div>
+ 
+ 
+ 
+    </div>
+</body>
+ 
+</html>

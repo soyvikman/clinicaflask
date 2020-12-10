@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <title>Aplicación Web</title> 
+</head> 
+<body>
+ 
+    <div class="container">
+        <div class="header">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li role="presentation"><a href="#">Mantenimiento</a></li>
+<ul>
+<li role="presentation" class="active"><a href="/mantUsuario">Mantenimiento Usuario</a>
+                    </li>
+<li role="presentation" class="active"><a href="/mantPaciente">Mantenimiento Paciente</a>
+                    </li>
+<li role="presentation" class="active"><a href="/mantServicio">Mantenimiento Servicio</a>
+                    </li>
+<li role="presentation" class="active"><a href="/mantMedico">Mantenimiento Medico</a>
+                    </li>
+</ul>
+                    <li role="presentation" class="active"><a href="#">Programacion</a>
+                    </li>
+<ul>
+                    <li role="presentation" class="active"><a href="/progrConsultorio">Programacion Consultorio</a>
+                    </li></ul>
+
+
+<li role="presentation" class="active"><a href="/crearCita">Cita Medica</a>
+                    </li>
+<li role="presentation" class="active"><a href="/logout">Salir</a>
+                    </li>
+                </ul>
+            </nav>
+            <h3 class="text-muted">Aplicación Web</h3>
+        </div>
+
+
+ <form class="form-signin" action="/eliminaMedico" method="post">
+
+        <label for="inputCMP" class="sr-only">Codigo</label>
+        <input type="name" name="inputCMP" id="inputCMP" class="form-control" placeholder="Ingresar CMP" required autofocus>
+
+        <label for="inputApe" class="sr-only">Nombre</label>
+        <input type="name" name="inputApe" id="inputApe" class="form-control" placeholder="Ingresar Apellido" required>
+
+	<label for="inputNom" class="sr-only">Nombre</label>
+        <input type="name" name="inputNom" id="inputNom" class="form-control" placeholder="Ingresar Nombre" required>
+
+	<label for="inputDir" class="sr-only">Nombre</label>
+        <input type="name" name="inputDir" id="inputDir" class="form-control" placeholder="Ingresar Direccion">
+
+	<label for="inputDis" class="sr-only">Nombre</label>
+        <input type="name" name="inputDis" id="inputDis" class="form-control" placeholder="Ingresar Distrito">
+
+	<label for="inputTelf" class="sr-only">Nombre</label>
+        <input type="name" name="inputTelf" id="inputTelf" class="form-control" placeholder="Ingresar Numero Telefonico">
+
+	<label for="inputServ" class="sr-only">Nombre</label>
+        <input type="name" name="inputServ" id="inputServ" class="form-control" placeholder="Ingresar Servicio" required>
+         
+        <button id="btnIn" class="btn btn-lg btn-primary btn-block" type="submit">Agregar Servicio</button>
+
+      </form>
+
+ <h1>{{error}}</h1>
+
+        <div class="jumbotron">
+            <h1>Usuarios: </h1>
+         </div>
+ 
+ 
+ 
+    </div>
+</body>
+ 
+</html>
