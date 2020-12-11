@@ -63,16 +63,33 @@
  
     
 <div class="forma-mantenimiento">
-    <form class="form-signin" action="/eliminaUsuario" method="post">
+    <form class="form-signin" action="/agregarUsuario" method="post">
         <label for="inputU" class="sr-only">Usuario</label>
         <input type="name" name="inputU" id="inputU" class="form-control" placeholder="Ingresar Usuario" required autofocus>
         <label for="inputP" class="sr-only">Contraseña</label>
         <input type="name" name="inputP" id="inputP" class="form-control" placeholder="Ingresar Contraseña" required>   
-        <button id="btnIn" class="btn btn-lg btn-primary btn-block" type="submit">Agregar Usuario</button>
+        <button id="btnIn" class="btn btn-lg btn-primary btn-block mt-2 mb-2 " type="submit">Agregar Usuario</button>
     </form>
 <div>
-    
-            <a href="/editarUsuario" class="btn btn-secondary">Modificar Usuario</a>
+
+    {% if mensaje %}
+
+    <div class="alert alert-success" style="width: 30%; margin: 0 auto;" role="alert">
+        {{mensaje}}
+    </div>
+
+    {% endif %}
+
+    {% if error %}
+
+    <div class="alert alert-danger" style="width: 30%; margin: 0 auto;" role="alert">
+        {{error}}
+    </div>
+
+    {% endif %}
+
+
+    <a href="/editarUsuario" class="btn btn-secondary">Modificar Usuario</a>
             <a href="/eliminarUsuario" class="btn btn-danger btn-delete">Eliminar Usuario</a>
 </div>
 

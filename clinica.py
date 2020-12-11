@@ -107,9 +107,10 @@ def agregarUsuario():
             _pass = request.form['inputP']
             conn = mysql.connect()
             cursor = conn.cursor()
-            cursor.callproc('agregarUss', (_us, _pass))#AGREGAR NUEVO USUARIO
+            data = cursor.callproc('agregarUsuario', (_us, _pass))#AGREGAR NUEVO USUARIO
             conn.commit()
-            return redirect('/mantUsuario')
+            print(data)
+            return render_template('mantUsuario.html', mensaje="Se creo el usuario satisfactoriamente")
     except Exception as e:
         return render_template('mantUsuario.html', error=str(e))
 
@@ -179,10 +180,11 @@ def agregarPaciente():
             _sex = request.form['inputSex']
             _tseg = request.form['inputTipSeg']
             _vig = request.form['inputVig']
-            cursor.callproc('agregarPac', (_h, _ap, _am, _nom, _td, _nd, _ntel, _dir, _dis, _fn, _sex, _tseg, _vig))
+            datas = cursor.callproc('agregarPac', (_h, _ap, _am, _nom, _td, _nd, _ntel, _dir, _dis, _fn, _sex, _tseg, _vig))
             #AGREGAR A UN NUEVO PACIENTE
             conn.commit()
-            return redirect('/mantPaciente')
+            print(datas)
+            return render_template('mantPaciente.html', datos=datas)
     except Exception as e:
         return render_template('mantPaciente.html', error=str(e))
 
@@ -251,9 +253,9 @@ def agregarServicio():
             _nom = request.form['inputNom']
             conn = mysql.connect()
             cursor = conn.cursor()
-            cursor.callproc('agregarServ', (_cod, _nom))#AGREGAR UN NUEVO SERVICIO
+            datos = cursor.callproc('agregarServ', (_cod, _nom))#AGREGAR UN NUEVO SERVICIO
             conn.commit()
-            return redirect('/mantServicio')
+            return render_template('mantServicio.html', datos=datos)
     except Exception as e:
         return render_template('mantServicio.html', error=str(e))
 
@@ -319,9 +321,9 @@ def agregarMedico():
             _dir = request.form['inputDir']
             _dis = request.form['inputDis']
             _tef = request.form['inputTelf']
-            cursor.callproc('agregarMed', (_cmp, _ap, _nom, _dir, _dis, _tef, _cod))#AGREGAR UN NUEVO MEDICO
+            datos = cursor.callproc('agregarMed', (_cmp, _ap, _nom, _dir, _dis, _tef, _cod))#AGREGAR UN NUEVO MEDICO
             conn.commit()
-            return redirect('/mantMedico')
+            return render_template('mantMedico.html', datos=datos)
     except Exception as e:
         return render_template('mantMedico.html', error=str(e))
 
@@ -395,9 +397,9 @@ def agregarProgCons():
             _hor = request.form['inputHor']
             _tur = request.form['inputTur']
             _cup = request.form['inputCup']
-            cursor.callproc('agregarProgCons', (_cod, _cmp, _fec, _hor, _tur, _cup))#AGREGAR UNA NUEVA PROGRAMACION
+            datos = cursor.callproc('agregarProgCons', (_cod, _cmp, _fec, _hor, _tur, _cup))#AGREGAR UNA NUEVA PROGRAMACION
             conn.commit()
-            return redirect('/progrConsultorio')
+            return render_template('progrConsultorio.html', datos=datos)
     except Exception as e:
         return render_template('progrConsultorio.html', error=str(e))
 
